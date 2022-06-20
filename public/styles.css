@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@100;200;300;400&display=swap');
+
+/* reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Anek Malayalam', sans-serif;
+    background-color: bisque;
+}
+
+.hero {
+    background-image: url('img/hero_food.jpg');
+    height: 300px;
+    font-size: 24px;
+    text-align: center;
+    padding-top: 200px;
+    display: block;
+}
+
+.hero h1 {
+    font-weight: 400;
+    margin: 10px;
+    background-color: white;
+}
+
+.info-table h2 {
+    font-weight: 200;
+}
+
+.info-table {
+    overflow-x: auto;
+    margin: 20px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 5px;
+    font-weight: 200;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+}
+
+.table .dark-header th {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #454d55;
+}
+
+/* hide table for now */
+.info-table {
+    display: block;
+}
