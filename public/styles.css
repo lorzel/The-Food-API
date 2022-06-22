@@ -22,8 +22,14 @@ body {
 
 .hero h1 {
     font-weight: 400;
+    font-size: 72px;
     margin: 10px;
-    background-color: white;
+    color: white;
+}
+
+.hero button {
+    width: 100px;
+    height: 30px;
 }
 
 .info-table h2 {
@@ -43,15 +49,33 @@ body {
     width: 100%;
     margin-bottom: 1rem;
     color: #212529;
+    border: 1px solid #212529;
 }
 
 .table .dark-header th {
     color: #fff;
     background-color: #343a40;
-    border-color: #454d55;
 }
 
+#result tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+#result td {
+    padding-left: 5px;
+}
+
+
 /* hide table for now */
-.info-table {
-    display: block;
+#table {
+    display: none;
+}
+
+.info-panel h3 {
+    text-align: center;
+}
+
+#user-food {
+    height: 45px;
+    font-size: 24px;
 }

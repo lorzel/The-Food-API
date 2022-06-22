@@ -1,6 +1,5 @@
 let btn = document.getElementById('btn');
 
-
 function addToTable(column, rowNow) {
     let table = document.getElementById("result");
     let row = table.insertRow(rowNow);
@@ -13,8 +12,8 @@ function addToTable(column, rowNow) {
 };
 
 btn.addEventListener('click', async function () {
-    let query = document.getElementById('userFood').value;
-    console.log(query);
+
+    let query = document.getElementById('user-food').value;
 
     const data = {
         query: query
@@ -30,9 +29,6 @@ btn.addEventListener('click', async function () {
 
     const response = await fetch('/foodapi', options);
     const apiResponse = await response.json();
-    console.log(apiResponse);
-
-    console.log('number of items: ' + apiResponse.items.length);
 
     for (let i = 0; i < apiResponse.items.length; i++) {
 
@@ -66,13 +62,14 @@ btn.addEventListener('click', async function () {
 
         addToTable(infoArray, i);
 
-        console.log(food_name);
-
         for (let key in apiResponse.items[i]) {
             console.log(`${key} : ${apiResponse.items[i][key]}`);
 
 
         }
+
+        document.getElementById("table").style.display = "block";
+
 
     };
 });

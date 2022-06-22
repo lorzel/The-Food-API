@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food API</title>
+    <title>What I ate today</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -15,7 +15,7 @@
     <section>
         <div class="hero">
             <h1>What I ate today?</h1>
-            <input type="text" id="userFood"><br>
+            <input type="text" id="user-food"><br>
             <button id="btn">Check</button>
         </div>
     </section>
@@ -23,13 +23,13 @@
 
     <section>
         <div class="info-panel">
-            <div class="info-table">
-                <h3>Nutrition Results</h3>
+            <div class="info-table" id="table">
+                <h3>Nutrition Results</h3><br>
                 <table class="table">
                     <thead class="dark-header">
                         <tr>
                             <th>Name</th>
-                            <th>Size (dedault: 100g)</th>
+                            <th>Size</th>
                             <th>Calories</th>
                             <th>Total Fat</th>
                             <th>Saturated Fat</th>
