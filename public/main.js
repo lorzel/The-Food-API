@@ -1,13 +1,40 @@
 let btn = document.getElementById('btn');
+let classesList = ["name", "size", "calor", "t_fat", "s_fat", "choler", "sod", "carb", "fib", "sug", "pot", "prot"];
+let totalTable = document.getElementById("total-row");
+
 
 function addToTable(column, rowNow) {
     let table = document.getElementById("result");
     let row = table.insertRow(rowNow);
+    let total = 0;
+    let totalArray = [];
 
+    //insert to table value for each column
     for (let i = 0; i < column.length; i++) {
         let cell = row.insertCell(i);
         cell.innerHTML = column[i];
+        cell.classList.add(classesList[i]);
     }
+
+    //insert row with Total amounts
+    let rowsNumber = table.rows.length;
+    let totalRow = table.insertRow(rowsNumber);
+
+    for (let i = 1; i < classesList.length; i++) {
+        document.querySelectorAll("." + classesList[i]).forEach(function (element, index) {
+            total += +element.textContent;
+        });
+        totalArray.push(total);
+        total = 0;
+    };
+
+    //insert total sum values into 'Total' row
+    for (let i = 1; i <= 11; i++) {
+        totalTable.rows[0].cells[i].innerHTML = totalArray[i - 1];
+    }
+
+    //clear array with total values afert function execute
+    totalArray = [];
 
 };
 
@@ -61,12 +88,6 @@ btn.addEventListener('click', async function () {
         infoArray.push(protein);
 
         addToTable(infoArray, i);
-
-        for (let key in apiResponse.items[i]) {
-            console.log(`${key} : ${apiResponse.items[i][key]}`);
-
-
-        }
 
         document.getElementById("table").style.display = "block";
 
