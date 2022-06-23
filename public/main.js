@@ -1,10 +1,12 @@
 let btn = document.getElementById('btn');
 let classesList = ["name", "size", "calor", "t_fat", "s_fat", "choler", "sod", "carb", "fib", "sug", "pot", "prot"];
 let totalTable = document.getElementById("total-row");
+let clearTableBtn = document.getElementById("clear-table-btn");
+let table = document.getElementById("result");
+
 
 
 function addToTable(column, rowNow) {
-    let table = document.getElementById("result");
     let row = table.insertRow(rowNow);
     let total = 0;
     let totalArray = [];
@@ -30,7 +32,12 @@ function addToTable(column, rowNow) {
 
     //insert total sum values into 'Total' row
     for (let i = 1; i <= 11; i++) {
-        totalTable.rows[0].cells[i].innerHTML = totalArray[i - 1];
+        if (totalArray[i] % 1) {
+            totalTable.rows[0].cells[i].innerHTML = totalArray[i - 1];
+        } else {
+            totalTable.rows[0].cells[i].innerHTML = totalArray[i - 1].toFixed(1);
+        }
+
     }
 
     //clear array with total values afert function execute
@@ -90,8 +97,15 @@ btn.addEventListener('click', async function () {
         addToTable(infoArray, i);
 
         document.getElementById("table").style.display = "block";
+        document.getElementById("clear-table-btn").style.display = "block";
 
+    };
+});
 
+clearTableBtn.addEventListener("click", function () {
+    table.innerHTML = "";
+    for (let i = 1; i <= 11; i++) {
+        totalTable.rows[0].cells[i].innerHTML = "0";
     };
 });
 

@@ -20,15 +20,6 @@ function apiCalls() {
     });
 }
 
-//run database query
-// let apiCallsCount = function runQuery(db) {
-//     db.all("SELECT * FROM api_calls_count", (err, rows) => {
-//         return rows;
-//     })
-// }
-
-// runQuery();
-
 let query = '';
 
 app.post('/foodapi', async (request, response) => {
@@ -47,9 +38,6 @@ app.post('/foodapi', async (request, response) => {
     };
 
     const fetchApiData = await fetch(`https://calorieninjas.p.rapidapi.com/v1/nutrition?query=${query}`, options)
-    //.then(response => response.json())
-    //.then(response => console.log(response))
-    //.catch(err => console.error(err));
 
     const foodInfoResponse = await fetchApiData.json();
     response.json(foodInfoResponse);
