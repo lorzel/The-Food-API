@@ -47,6 +47,8 @@ function addToTable(column, rowNow) {
 
 btn.addEventListener('click', async function () {
 
+    document.getElementById("loading").style.display = "inline";
+
     let query = document.getElementById('user-food').value;
 
     const data = {
@@ -98,6 +100,7 @@ btn.addEventListener('click', async function () {
 
         document.getElementById("table").style.display = "block";
         document.getElementById("clear-table-btn").style.display = "block";
+        document.getElementById("loading").style.display = "none";
 
     };
 });

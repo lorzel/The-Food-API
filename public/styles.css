@@ -66,6 +66,12 @@ body {
     background-color: #343a40;
 }
 
+#loading {
+    width: 40px;
+    margin-left: -15px;
+    display: none;
+}
+
 #result tr:nth-child(even) {
     background-color: #f2f2f2;
 }
@@ -104,6 +110,7 @@ body {
     display: none;
 }
 
-#clear-table-btn, #btn:hover {
+#clear-table-btn,
+#btn:hover {
     cursor: pointer;
 }
