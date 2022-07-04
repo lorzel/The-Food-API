@@ -32,12 +32,7 @@ function addToTable(column, rowNow) {
 
     //insert total sum values into 'Total' row
     for (let i = 1; i <= 11; i++) {
-        if (totalArray[i] % 1) {
-            totalTable.rows[0].cells[i].innerHTML = totalArray[i - 1];
-        } else {
-            totalTable.rows[0].cells[i].innerHTML = totalArray[i - 1].toFixed(1);
-        }
-
+        totalTable.rows[0].cells[i].innerHTML = totalArray[i - 1].toFixed(1);
     }
 
     //clear array with total values afert function execute
