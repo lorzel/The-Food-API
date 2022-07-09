@@ -1,7 +1,7 @@
-const regBtn = document.getElementById('regBtn');
+const loginBtn = document.getElementById('loginBtn');
 
 
-regBtn.addEventListener('click', async function () {
+loginBtn.addEventListener('click', async function () {
     const username = document.getElementById('login-username').value;
     const password = document.getElementById('login-password').value;
 
