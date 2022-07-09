@@ -94,34 +94,35 @@ app.post('/register', (request, response) => {
 app.post('/login', async (request, response) => {
     const { username, password } = request.body;
 
-    let userCheck = await checkIfUserExist(username);
+    let userCheck = await checkUserInDB(username, password);
 
     console.log(userCheck);
 
-    if (username == userCheck) {
-        console.log(`Entered username: ${username}`);
-        console.log(`User in db: ${userCheck}`);
-        response.json({ status: `User ${userCheck} found.` });
-    } 
-    else {
-        console.log(`Entered username: ${username}`);
-        console.log(`User in db: ${userCheck}`);
-        response.json({ status: 'User not found.' });
+    if (userCheck == 'no such user') {
+        response.json({ status: `No user ${username} found.` });
+    }
+    else if (userCheck == 'wrong password') {
+        response.json({ status: 'Wrong password.'});
+    } else {
+        response.json({ status: 'Logged in properly.' })
     }
 
 })
 
 
-function checkIfUserExist(db_username) {
+function checkUserInDB(db_username, db_password) {
     return new Promise((resolve, reject) => {
         db.get(`SELECT USERNAME FROM users WHERE username = '${db_username}'`, (error, row) => {
-            if (error) {
-                reject(error);
-            }
             if (row) {
-                resolve(row.username);
+                db.get(`SELECT u_password FROM users WHERE username = '${db_username}' AND u_password = '${db_password}'`, (error, row) => {
+                    if (row) {
+                        resolve(row.u_password);
+                    } else {
+                        resolve('wrong password');
+                    }
+                })
             } else {
-                resolve('not found');
+                resolve('no such user');
             }
         });
     });
