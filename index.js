@@ -102,35 +102,12 @@ app.post('/login', async (request, response) => {
         console.log(`Entered username: ${username}`);
         console.log(`User in db: ${userCheck}`);
         response.json({ status: `User ${userCheck} found.` });
-    }
-    //  else if (error) {
-    //     console.log(error.message);
-    //     response.json({status: error.message});
-    // } 
+    } 
     else {
         console.log(`Entered username: ${username}`);
         console.log(`User in db: ${userCheck}`);
         response.json({ status: 'User not found.' });
     }
-
-    // db.get(`SELECT USERNAME FROM users WHERE username = '${username}'`, (error, row) => {
-    //     let queryResult = row.username;
-
-    //     if (error) {
-    //         console.log(error.message);
-    //         response.json({ status: error.message });
-    //     }
-    //     else if (queryResult != undefined) {
-    //         console.log(username);
-    //         console.log(row.username);
-    //         response.json({status: `There is no such user as ${username}`});
-    //     } 
-    //     else {
-    //         console.log(username);
-    //         console.log(row.username);
-    //         response.json({status: `Hello again ${username}`});
-    //     }
-    // })
 
 })
 
