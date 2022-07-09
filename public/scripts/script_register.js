@@ -2,8 +2,8 @@ const regBtn = document.getElementById('regBtn');
 
 
 regBtn.addEventListener('click', async function () {
-    const username = document.getElementById('login-username').value;
-    const password = document.getElementById('login-password').value;
+    const username = document.getElementById('form-username').value;
+    const password = document.getElementById('form-password').value;
 
     const data = {
         username: username,
@@ -18,7 +18,7 @@ regBtn.addEventListener('click', async function () {
         body: JSON.stringify(data)
     }
 
-    const response = await fetch('/login', options);
+    const response = await fetch('/register', options);
     const apiResponse = await response.json();
     
     alert(apiResponse.status);
