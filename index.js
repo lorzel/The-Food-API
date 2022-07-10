@@ -94,36 +94,54 @@ app.post('/register', (request, response) => {
 app.post('/login', async (request, response) => {
     const { username, password } = request.body;
 
-    let userCheck = await checkUserInDB(username, password);
+    let userCheck = await userExist(username);
+    let dbPassword = await checkPassword(username);
 
-    console.log(userCheck);
+    if (userCheck == true) {
+        bcrypt.compare(password, String(dbPassword)).then((match) => {
+            if (match) {
+                response.json({ status: 'User logged in.' });
+            } else {
+                response.json({ status: 'Wrong password' });
+            }
 
-    if (userCheck == 'no such user') {
-        response.json({ status: `No user ${username} found.` });
+        })
     }
-    else if (userCheck == 'wrong password') {
-        response.json({ status: 'Wrong password.'});
+    else if (userCheck == false) {
+        response.json({ status: `no user "${username}" found` });
     } else {
-        response.json({ status: 'Logged in properly.' })
+        response.json({ status: userCheck })
     }
 
 })
 
-
-function checkUserInDB(db_username, db_password) {
+function userExist(db_username) {
     return new Promise((resolve, reject) => {
         db.get(`SELECT USERNAME FROM users WHERE username = '${db_username}'`, (error, row) => {
             if (row) {
-                db.get(`SELECT u_password FROM users WHERE username = '${db_username}' AND u_password = '${db_password}'`, (error, row) => {
-                    if (row) {
-                        resolve(row.u_password);
-                    } else {
-                        resolve('wrong password');
-                    }
-                })
+                resolve(true);
+            } else if (error) {
+                resolve(error.message);
             } else {
-                resolve('no such user');
+                resolve(false);
             }
-        });
-    });
+        })
+    })
+}
+
+function checkPassword(db_username) {
+    return new Promise((resolve, reject) => {
+        db.get(`SELECT u_password FROM USERS WHERE username = '${db_username}'`, (error, row) => {
+            if (row) {
+                console.log(row.u_password);
+                resolve(row.u_password);
+            }
+            else if (error) {
+                resolve(error.message);
+            }
+            else {
+                resolve(false);
+            }
+        })
+    })
 }
