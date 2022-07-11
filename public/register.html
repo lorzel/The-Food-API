@@ -11,17 +11,20 @@
 
 <body>
 
+    <div class="menu">
+        <nav>
+            <ul>
+                <li><a href="register">Register</a></li>
+                <li><a href="login">Login</a></li>
+                <li><a href="http://localhost:3000/">Home</a></li>
+            </ul>
+        </nav>
+    </div>
+
     <h2>Register</h2>
 
-    <!-- <form action="">
-        <label for="username">Username:</label>
-        <input type="text" id="form-username" name="username">
-        <label for="password">Password</label>
-        <input type="password" id="form-password" name="password">
-        <input type="submit" value="Register" id="regBtn">
-    </form> -->
     <label for="username">Username:</label>
-    <input type="text" id="form-username" name="username">
+    <input type="email" id="form-username" name="username" required>
     <label for="password">Password</label>
     <input type="password" id="form-password" name="password">
     <button id="regBtn">Register</button>
