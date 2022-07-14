@@ -20,8 +20,12 @@ loginBtn.addEventListener('click', async function () {
 
     const response = await fetch('/login', options);
     const apiResponse = await response.json();
-    
-    alert(apiResponse.status);
 
+    if (apiResponse.status == 'User logged in.') {
+        window.open('http://localhost:3000/user_view', '_self');
+
+    } else {
+        alert(apiResponse.status);
+    }
 
 })

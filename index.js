@@ -4,6 +4,7 @@ require('dotenv').config();
 const path = require('path');
 const router = express.Router();
 const bcrypt = require('bcrypt');
+const open = require('open');
 
 //connect to sqlite3 db
 const sqlite3 = require("sqlite3").verbose();
@@ -24,6 +25,9 @@ router.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname + ('/public/login.html')));
 })
 
+router.get('/user_view', (rew, res) => {
+    res.sendFile(path.join(__dirname + ('/public/user_view.html')));
+})
 
 function apiCalls() {
     return new Promise((resolve, reject) => {
