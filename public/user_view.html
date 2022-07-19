@@ -26,11 +26,78 @@
             <button id="btn"><img src="img/loading.gif" id="loading">Check</button>
         </div>
     </section>
-    <br><br>
-   <center><h3>You have been loggen properly.</h3></center>
 
+    <section>
+        <div class="info-panel">
+            <div class="info-table" id="table">
+                <h3>Nutrition Results</h3><br>
+                <table class="table">
+                    <thead class="dark-header">
+                        <tr>
+                            <th>Name</th>
+                            <th>Size (g)</th>
+                            <th>Calories</th>
+                            <th>Total Fat (g)</th>
+                            <th>Saturated Fat (g)</th>
+                            <th>Cholesterol (mg)</th>
+                            <th>Sodium (mg)</th>
+                            <th>Carbohydrates (g)</th>
+                            <th>Fiber (g)</th>
+                            <th>Sugar (g)</th>
+                            <th>Potassium (g)</th>
+                            <th>Protein (g)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="result">
+                    </tbody>
+                    <tbody id="total-row">
+                        <tr>
+                            <td><b>Total</b></td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <button id="clear-table-btn">Clear table</button>
+        </div>
+    </section>
+
+    <section class="BMR-calc">
+        <div>
+            <h2>Calculate Basal Metabolic Rate</h2>     
+            <p>Select your gender:</p>
+            <input type="radio" name="sex" id="man" value="man">
+            <label for="man">Man</label>
+            <input type="radio" name="sex" id="woman" value="woman">
+            <label for="sex">Woman</label>
+            <br>
+            <label for="height">Height in cm:</label>
+            <input type="text" name="height" id="height">
+            <br>
+            <label for="weight">Weight in kg:</label>
+            <input type="text" name="weight" id="weight">
+            <br>
+            <label for="age">Age:</label>
+            <input type="text" name="age" id="age">
+            <br>
+            <button id="bmr-btn">Calculate</button>
+            <br><br>
+            <p>Your BMR is: <span id="bmr-value"></span></p>
+        </div>
+    </section>
 
     <script type="module" src="scripts/main.js"></script>
+    <script type="module" src="scripts/bmr_calc.js"></script>
 </body>
 
 </html>
